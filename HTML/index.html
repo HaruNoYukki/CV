@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Ángel García</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-terminal">
+            <span id="typed-logo"></span><span class="cursor">_</span>
+        </div>
+        <div class="controls">
+            <div class="lang-switch">
+                <button class="lang-btn" onclick="setLanguage('es')" id="btn-es">ES</button>
+                <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="setLanguage('ja')" id="btn-ja">JA</button>
+            </div>
+            
+            <button class="theme-toggle" onclick="window.print()" aria-label="Guardar como PDF" title="Guardar como PDF">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+            </button>
+
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Cambiar tema">
+                <svg id="theme-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1 id="name">Ángel García</h1>
+            <h2 id="title">Ingeniero de Software</h2>
+            <div class="contact-info">
+                <span id="birth">01/06/2001</span> | 
+                <span id="location">México, CDMX</span>
+            </div>
+            <div class="social-links">
+                <a href="mailto:Angel_E_Garcia_F@proton.me" id="btn-email">Contactar</a>
+                <a href="https://www.linkedin.com/in/angelegarciaf/" target="_blank">LinkedIn</a>
+                <a href="TU_LINK_GITHUB_AQUI" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <section>
+            <h3 id="h-about">Sobre Mí</h3>
+            <p id="t-about">Texto dinámico</p>
+        </section>
+
+        <section>
+            <h3 id="h-skills">Competencias Core y Stack Tecnológico</h3>
+            <div class="skills-grid" id="t-skills">
+                <div class="skill-item" id="skill1">Arquitectura de APIs RESTful & Microservicios</div>
+                <div class="skill-item" id="skill2">Desarrollo Backend (Node.js, Express)</div>
+                <div class="skill-item" id="skill3">Gestión de Bases de Datos (MongoDB, SQL)</div>
+                <div class="skill-item" id="skill4">Ecosistemas Web3 & Blockchain Solana</div>
+                <div class="skill-item" id="skill5">Arquitectura de Sistemas & Cloud</div>
+                <div class="skill-item" id="skill6">Control de Versiones & CI/CD (Git)</div>
+            </div>
+        </section>
+
+        <section>
+            <h3 id="h-experience">Experiencia Laboral</h3>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title" id="job1-title">Fundador - Nykniu</span>
+                    <span id="job1-date">Enero 2019 - Febrero 2026</span>
+                </div>
+                <ul id="job1-desc">
+                    <li>Texto dinámico</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title" id="job2-title">Desarrollador Web - SkyDrop</span>
+                    <span id="job2-date">Noviembre 2017 - Diciembre 2018</span>
+                </div>
+                <ul id="job2-desc">
+                    <li>Texto dinámico</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3 id="h-hack">Hackathones y Proyectos Estratégicos</h3>
+            <div class="job">
+                <ul id="t-hack">
+                    <li>Texto dinámico</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3 id="h-academic">Formación Académica</h3>
+            <ul>
+                <li id="edu1"><strong>Escuela Superior de Cómputo:</strong> Ingeniería en Sistemas Computacionales | Enero 2021 - En proceso de titulación.</li>
+                <li id="edu2"><strong>Centro de Estudios Científicos y Tecnológicos #9:</strong> Técnico Programador | Agosto 2016 - Julio 2020.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script src="/JS/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --accent-color: #000000;
+    --secondary-bg: #f4f4f4;
+    --border-color: #dddddd;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #ffffff;
+    --secondary-bg: #1e1e1e;
+    --border-color: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Diseño del selector de idiomas (Píldora) */
+.lang-switch {
+    display: flex;
+    background-color: var(--bg-color);
+    border-radius: 30px;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 25px;
+    transition: var(--transition);
+    outline: none;
+}
+
+.lang-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.lang-btn:hover:not(.active) {
+    opacity: 0.6;
+}
+
+/* Diseño del botón circular del tema */
+.theme-toggle {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    outline: none;
+}
+
+.theme-toggle:hover {
+    background-color: var(--secondary-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+}
+
+/* Resto de la estructura */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero h2 {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    opacity: 0.8;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h3 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.job, .project {
+    margin-bottom: 25px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.job-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.skill-item {
+    background-color: var(--secondary-bg);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.skill-item:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+ul {
+    margin-left: 20px;
+}
+
+/* =========================================
+   Estilos del Logo Terminal (8-bit CRT)
+   ========================================= */
+.logo-terminal {
+    font-family: 'Courier New', Courier, monospace; /* Fuente clásica de consola */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #39ff14; /* Verde neón vibrante */
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.7), 
+                 0 0 10px rgba(57, 255, 20, 0.5); /* Resplandor CRT */
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    user-select: none; /* Evita que el usuario lo seleccione por accidente */
+}
+
+/* El bloque parpadeante del cursor */
+.cursor {
+    color: #39ff14;
+    margin-left: 4px;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.7);
+    animation: blink 1s step-end infinite;
+}
+
+/* Animación de parpadeo puro (sin transiciones suaves, como en DOS) */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* =========================================
+   Efecto de Scanlines (CRT Overlay)
+   ========================================= */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed; /* Se mantiene estático aunque hagas scroll */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* Crea las líneas horizontales intercaladas */
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.08) 50%
+    );
+    background-size: 100% 4px; /* Grosor de las líneas */
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    pointer-events: none; /* ¡CRUCIAL! Permite que los clics traspasen el efecto */
+}
+
+/* Opcional: Un ligerísimo parpadeo general para simular el tubo de rayos catódicos */
+body {
+    animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.99; }
+    50% { opacity: 1; }
+    100% { opacity: 0.99; }
+}
+
+/* =========================================
+   Diseño Responsivo (Móviles y Tablets)
+   ========================================= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .contact-info {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .social-links a {
+        margin: 0;
+        width: 100%;
+        max-width: 300px;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+    }
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   Reglas de Impresión (Exportar a PDF)
+   ========================================= */
+@media print {
+    /* Forzar fondo blanco y texto negro para legibilidad corporativa */
+    body, [data-theme="dark"] {
+        background-color: white !important;
+        color: black !important;
+        animation: none !important; /* Detener parpadeos */
+    }
+    
+    /* Eliminar los scanlines retro del PDF */
+    body::after {
+        display: none !important;
+    }
+
+    /* Ocultar elementos de UI que no tienen sentido en papel */
+    header, .controls, .theme-toggle, .lang-switch {
+        display: none !important;
+    }
+
+    /* Ajustar contenedores para aprovechar el tamaño A4/Carta */
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Estilizar enlaces para que parezcan botones limpios en el PDF */
+    .social-links a {
+        border: 1px solid black;
+        color: black !important;
+        background: transparent !important;
+        text-decoration: none;
+        padding: 5px 10px;
+    }
+
+    /* Quitar el verde neón del logo en el PDF */
+    .logo-terminal {
+        color: black !important;
+        text-shadow: none !important;
+    }
+    
+    /* Ocultar el cursor parpadeante */
+    .cursor {
+        display: none !important;
+    }
+
+    /* Permitir que las secciones se dividan, pero mantener juntos los bloques individuales */
+    .job, .skill-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Reducimos el margen inferior de las secciones solo en el PDF para compactar más */
+    section {
+        margin-bottom: 15px !important;
+    }
+    
+    h3 {
+        border-bottom-color: black !important;
+    }
+
+    /* 1. Permitir que las secciones y contenedores de trabajos se dividan en varias páginas */
+    section, .job {
+        page-break-inside: auto;
+        break-inside: auto;
+    }
+
+    /* 2. Evitar que un título se quede solo al final de la página (lo pega al siguiente texto) */
+    h3, .job-header {
+        page-break-after: avoid;
+        break-after: avoid;
+        margin-bottom: 5px;
+    }
+
+    /* 3. Evitar que un elemento individual de la lista se corte a la mitad horizontalmente */
+    li, .skill-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
