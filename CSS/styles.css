@@ -302,83 +302,131 @@ body {
 
 /* =========================================
    Reglas de Impresión (Exportar a PDF)
+   Formato ATS: Helvetica, 1 página
+   Nombre 18pt | Títulos de sección 14pt | Cuerpo 10pt
    ========================================= */
+@page {
+    size: letter;
+    margin: 6mm 10mm;
+}
+
 @media print {
-    /* Forzar fondo blanco y texto negro para legibilidad corporativa */
+    /* Helvetica en todo el documento (ignora la fuente de pantalla) */
+    *, *::before, *::after {
+        font-family: Helvetica, Arial, sans-serif !important;
+    }
+
+    /* Texto negro sobre blanco, sin animaciones (requisito ATS) */
     body, [data-theme="dark"] {
         background-color: white !important;
         color: black !important;
-        animation: none !important; /* Detener parpadeos */
+        animation: none !important;
+        font-size: 10pt;
+        line-height: 1.2;
     }
-    
-    /* Eliminar los scanlines retro del PDF */
-    body::after {
+
+    /* Ocultar UI y efectos que un parser ATS no lee */
+    header, .controls, .theme-toggle, .lang-switch,
+    body::after, .logo-terminal, .cursor {
         display: none !important;
     }
 
-    /* Ocultar elementos de UI que no tienen sentido en papel */
-    header, .controls, .theme-toggle, .lang-switch {
-        display: none !important;
-    }
-
-    /* Ajustar contenedores para aprovechar el tamaño A4/Carta */
     .container {
         max-width: 100%;
         margin: 0;
         padding: 0;
     }
 
-    /* Estilizar enlaces para que parezcan botones limpios en el PDF */
+    /* Encabezado: nombre a 18pt, resto del hero a 10pt */
+    .hero {
+        text-align: center;
+        margin-bottom: 6pt;
+    }
+    .hero h1 {
+        font-size: 18pt;
+        letter-spacing: 0;
+        margin: 0 0 2pt;
+    }
+    .hero h2 {
+        font-size: 10pt;
+        font-weight: bold;
+        margin-bottom: 3pt;
+    }
+    /* En impresión el ancho de página cae bajo los 768px de la media query
+       móvil; restauramos el flujo horizontal de contacto y enlaces */
+    .contact-info, .social-links {
+        display: block;
+    }
+    .contact-info {
+        font-size: 10pt;
+        margin-bottom: 3pt;
+    }
     .social-links a {
-        border: 1px solid black;
-        color: black !important;
+        display: inline;
+        margin: 0 6pt;
+        padding: 0;
         background: transparent !important;
-        text-decoration: none;
-        padding: 5px 10px;
-    }
-
-    /* Quitar el verde neón del logo en el PDF */
-    .logo-terminal {
         color: black !important;
-        text-shadow: none !important;
-    }
-    
-    /* Ocultar el cursor parpadeante */
-    .cursor {
-        display: none !important;
+        border: none;
+        border-radius: 0;
+        font-weight: normal;
+        font-size: 10pt;
+        text-decoration: underline;
     }
 
-    /* Permitir que las secciones se dividan, pero mantener juntos los bloques individuales */
-    .job, .skill-item {
+    /* Títulos de sección: 14pt con subrayado simple */
+    h3 {
+        font-size: 14pt;
+        border-bottom: 1px solid black;
+        padding-bottom: 1pt;
+        margin: 4pt 0 2pt;
+    }
+
+    section {
+        margin-bottom: 6pt;
+    }
+
+    /* Cuerpo del texto: 10pt en todo el contenido */
+    p, li, .job-header, .job-title, .skill-item {
+        font-size: 10pt;
+    }
+    .job-title {
+        font-weight: bold;
+    }
+
+    /* Habilidades en 2 columnas para ahorrar espacio
+       (el orden del DOM no cambia: los ATS leen skill1..skill6 en secuencia) */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2pt 12pt;
+    }
+    .skill-item {
+        background: transparent !important;
+        color: black !important;
+        padding: 0;
+        border-radius: 0;
+        text-align: left;
+        transition: none;
+    }
+
+    /* Compactación para caber en una sola página */
+    .job {
+        margin-bottom: 5pt;
+    }
+    ul {
+        margin: 2pt 0 0 12pt;
+    }
+    li {
+        margin-bottom: 0;
+    }
+
+    /* Control de saltos de página */
+    .job, .skill-item, li {
         page-break-inside: avoid;
         break-inside: avoid;
     }
-
-    /* Reducimos el margen inferior de las secciones solo en el PDF para compactar más */
-    section {
-        margin-bottom: 15px !important;
-    }
-    
-    h3 {
-        border-bottom-color: black !important;
-    }
-
-    /* 1. Permitir que las secciones y contenedores de trabajos se dividan en varias páginas */
-    section, .job {
-        page-break-inside: auto;
-        break-inside: auto;
-    }
-
-    /* 2. Evitar que un título se quede solo al final de la página (lo pega al siguiente texto) */
     h3, .job-header {
         page-break-after: avoid;
         break-after: avoid;
-        margin-bottom: 5px;
-    }
-
-    /* 3. Evitar que un elemento individual de la lista se corte a la mitad horizontalmente */
-    li, .skill-item {
-        page-break-inside: avoid;
-        break-inside: avoid;
     }
 }
